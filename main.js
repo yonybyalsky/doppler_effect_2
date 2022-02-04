@@ -1,22 +1,31 @@
 imgColor = document.querySelector('.imgColor');
 speedData = document.querySelector('.speedData');
+input = document.querySelector('.userInput');
+btn = document.querySelector('.btn')
 wavelengthData = document.querySelector('.wavelengthData');
+waveInput = 550;
 let i = 0;
 
+btn.addEventListener('click', () => {
+    changeColor(wavelenghtToRgb(input.value));
+    waveInput = input.value
+})
+
 document.addEventListener('keydown', function (event) {
+
   if (event.key === 'd') {
     i += 0.001;
     i = Number(i.toFixed(3));
-    color_arr = wavelenghtToRgb(dopplerEffect(i, 550));
-    wavelengthData.innerHTML = dopplerEffect(i, 550);
+    color_arr = wavelenghtToRgb(dopplerEffect(i, waveInput));
+    wavelengthData.innerHTML = dopplerEffect(i, waveInput);
     speedData.innerHTML = i;
     changeColor(color_arr);
   }
   if (event.key === 'a') {
     i -= 0.001;
     i = Number(i.toFixed(3));
-    color_arr = wavelenghtToRgb(dopplerEffect(i, 550));
-    wavelengthData.innerHTML = dopplerEffect(i, 550);
+    color_arr = wavelenghtToRgb(dopplerEffect(i, waveInput));
+    wavelengthData.innerHTML = dopplerEffect(i, waveInput);
     speedData.innerHTML = i;
     changeColor(color_arr);
   }
